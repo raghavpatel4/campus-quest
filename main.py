@@ -2,7 +2,7 @@
 from university import University
 
 def main():
-    print("Welcome to Tiny University!")
+    print("Welcome to Campus Quest!")
     university_name = input("Enter the name of your university: ")
     university = University(university_name)
 
