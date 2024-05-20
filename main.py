@@ -4,11 +4,12 @@ from university import University
 def main():
     print("Welcome to Campus Quest!")
     university_name = input("Enter the name of your university: ")
+
     university = University(university_name)
+    print(f"\nWelcome, President of {university.name}!")
 
     while True:
-        print(f"\nWelcome, President of {university.name}!")
-        print(f"Current Funds: ${university.current_funds()}")
+        print(f"\nCurrent Funds: ${university.current_funds()}")
 
         print("What would you like to do?")
         print("\n1. View Campus")
