@@ -1,8 +1,32 @@
 # main.py
 from university import University, money_to_string
+import pygame as pg
+from game.game import Game
 
 
 def main():
+    running = True
+    playing = True
+
+    pg.init()
+    pg.mixer.init()
+    screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
+    pg.display.set_caption("Campus Quest")
+
+    clock = pg.time.Clock()
+
+    # implement menus
+
+    # implement game
+    game = Game(screen, clock)
+
+    while running:
+        # start menu goes here
+
+        while playing:
+            # game goes here
+            game.run()
+
     print("Welcome to Campus Quest!")
     university_name = input("Enter the name of your university: ")
 
@@ -30,6 +54,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
