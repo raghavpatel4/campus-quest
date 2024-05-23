@@ -5,9 +5,6 @@ from src.game.world import World
 
 MINIMAP_SIZE = 200
 
-# Position minimap in top right corner
-#MINIMAP_POS = (800, 10)
-
 
 class Minimap:
 

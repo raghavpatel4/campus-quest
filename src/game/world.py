@@ -4,6 +4,17 @@ import noise
 from src.game.settings import TILE_SIZE
 
 
+def load_images():
+    block = pg.image.load("assets/graphics/block.png").convert_alpha()
+    tree = pg.image.load("assets/graphics/tree.png").convert_alpha()
+    rock = pg.image.load("assets/graphics/rock.png").convert_alpha()
+    rock2 = pg.image.load("assets/graphics/rock2.png").convert_alpha()
+    puddle = pg.image.load("assets/graphics/puddle.png").convert_alpha()
+    dorm = pg.image.load("assets/graphics/dorm.png").convert_alpha()
+
+    return {"block": block, "tree": tree, "rock": rock, "rock2": rock2, "puddle": puddle, "dorm": dorm}
+
+
 class World:
     def __init__(self, grid_length_x, grid_length_y, width, height):
         self.grid_length_x = grid_length_x
@@ -17,7 +28,7 @@ class World:
             (grid_length_x * TILE_SIZE * 2,
              grid_length_y * TILE_SIZE + 2 * TILE_SIZE)
         ).convert_alpha()
-        self.tiles = self.load_images()
+        self.tiles = load_images()
         self.world = self.create_world()
 
     def create_world(self):
@@ -79,13 +90,3 @@ class World:
         iso_x = x - y
         iso_y = (x + y) / 2
         return iso_x, iso_y
-
-    def load_images(self):
-        block = pg.image.load("assets/graphics/block.png").convert_alpha()
-        tree = pg.image.load("assets/graphics/tree.png").convert_alpha()
-        rock = pg.image.load("assets/graphics/rock.png").convert_alpha()
-        rock2 = pg.image.load("assets/graphics/rock2.png").convert_alpha()
-        puddle = pg.image.load("assets/graphics/puddle.png").convert_alpha()
-        dorm = pg.image.load("assets/graphics/dorm.png").convert_alpha()
-
-        return {"block": block, "tree": tree, "rock": rock, "rock2": rock2, "puddle": puddle, "dorm": dorm}
