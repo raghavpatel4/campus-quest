@@ -11,10 +11,30 @@ def draw_text(screen, text, size, color, pos):
 
 
 def draw_fps(screen, clock, pos):
-    draw_text(
-        screen,
-        'fps = {}'.format(round(clock.get_fps())),
-        36,
-        (255, 255, 255),
-        (10, 10)
-    )
+    # Display the current FPS in the top left corner
+    # Color code the FPS display based on the current FPS
+    if clock.get_fps() >= 45:
+        draw_text(
+            screen,
+            'fps = {}'.format(round(clock.get_fps())),
+            36,
+            (0, 255, 0),
+            (10, 10)
+        )
+    elif clock.get_fps() >= 30:
+        draw_text(
+            screen,
+            'fps = {}'.format(round(clock.get_fps())),
+            36,
+            (255, 255, 0),
+            (10, 10)
+        )
+    elif clock.get_fps() < 30:
+        draw_text(
+            screen,
+            'fps = {}'.format(round(clock.get_fps())),
+            36,
+            (255, 0, 0),
+            (10, 10)
+        )
+
