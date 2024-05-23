@@ -86,5 +86,6 @@ class World:
         rock = pg.image.load("assets/graphics/rock.png").convert_alpha()
         rock2 = pg.image.load("assets/graphics/rock2.png").convert_alpha()
         puddle = pg.image.load("assets/graphics/puddle.png").convert_alpha()
+        dorm = pg.image.load("assets/graphics/dorm.png").convert_alpha()
 
-        return {"block": block, "tree": tree, "rock": rock, "rock2": rock2, "puddle": puddle}
+        return {"block": block, "tree": tree, "rock": rock, "rock2": rock2, "puddle": puddle, "dorm": dorm}
