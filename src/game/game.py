@@ -1,10 +1,12 @@
 import pygame as pg
 import sys
 
-from game.camera import Camera
+from src.game.camera import Camera
 from src.game.world import World
 from src.game.settings import TILE_SIZE
 from src.game.utils import draw_fps
+from src.game.hud import Hud
+from src.game.minimap import Minimap
 
 
 class Game:
@@ -15,10 +17,13 @@ class Game:
         self.width, self.height = self.screen.get_size()
 
         # world
-        self.world = World(50, 50, self.width, self.height)
+        self.world = World(10, 10, self.width, self.height)
 
         # camera
         self.camera = Camera(self.width, self.height, self.world)
+
+        # hud
+        self.hud = Hud(self.width, self.height)
 
     def run(self):
         self.playing = True
@@ -53,19 +58,26 @@ class Game:
                 # rect = pg.Rect(sq[0][0], sq[0][1], TILE_SIZE, TILE_SIZE)
                 # pg.draw.rect(self.screen, (255, 255, 255), rect, 1)
 
+
                 render_pos = self.world.world[x][y]["render_pos"]
 
                 tile = self.world.world[x][y]["tile"]
                 if tile != "":
                     self.screen.blit(self.world.tiles[tile],
                                      (render_pos[0] + self.world.grass_tiles.get_width() / 2 + self.camera.scroll.x,
-                                      render_pos[1] - (self.world.tiles[tile].get_height() - TILE_SIZE) + self.camera.scroll.y))
+                                      render_pos[1] - (self.world.tiles[
+                                                           tile].get_height() - TILE_SIZE) + self.camera.scroll.y))
 
                 # Draw the isometric grid
                 # p = self.world.world[x][y]["iso_polygon"]
                 # Offset the polygon to the center of the screen
                 # p = [(x + self.width / 2, y + self.height / 4) for x, y in p]
                 # pg.draw.polygon(self.screen, (0, 0, 255), p, 1)
+
+        minimap = Minimap(self.screen, self.world)
+        minimap.draw_minimap()
+
+        self.hud.draw_hud(self.screen)
 
         draw_fps(self.screen, self.clock, (10, 10))
 
