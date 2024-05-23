@@ -17,10 +17,11 @@ class Game:
         self.width, self.height = self.screen.get_size()
 
         # world
-        self.world = World(10, 10, self.width, self.height)
+        self.world = World(50, 50, self.width, self.height)
 
         # camera
         self.camera = Camera(self.width, self.height, self.world)
+        self.center_camera_on_map()
 
         # hud
         self.hud = Hud(self.width, self.height)
@@ -82,3 +83,9 @@ class Game:
         draw_fps(self.screen, self.clock, (10, 10))
 
         pg.display.flip()
+
+    def center_camera_on_map(self):
+        init_x = -(self.world.grid_length_x * TILE_SIZE * 2) // 2 + self.width // 2
+        init_y = -(self.world.grid_length_y * TILE_SIZE) // 2 + self.height // 2
+        self.camera.set_init_position(init_x, init_y)
+

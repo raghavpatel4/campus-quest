@@ -15,6 +15,10 @@ class Camera:
         self.dy = 0
         self.speed = 10
 
+    def set_init_position(self, init_x, init_y):
+        self.scroll.x = init_x
+        self.scroll.y = init_y
+
     def update(self):
         mouse_pos = pg.mouse.get_pos()
 
